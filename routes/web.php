@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\productController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +19,13 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
 
 Route::get('/user', function () {
     return view('user');
 });
+
+Route::get('/dashboard', [productController::class,'product_backend']);
+
+Route::get('/create', [productController::class,'create']);
+
+Route::post('/producttambah', [productController::class,'store']);
